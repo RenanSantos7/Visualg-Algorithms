@@ -1,36 +1,58 @@
-// Lista alunos e suas médias
+// Lista alunos e suas mÃ©dias e informa quais estÃ£o
+// acima da mÃ©dia e quais foram aprovados
 
-algoritmo "Média dos Alunos"
+algoritmo "MÃ©dia dos Alunos"
 var
    nome:vetor[1..5] de caractere
    n1:vetor[1..5] de real
    n2:vetor[1..5] de real
    n3:vetor[1..5] de real
+   status:vetor[1..5] de caractere
    media:vetor[1..5] de real
-   c:inteiro
+   c,tot:inteiro
+   SM, MT: real
 inicio
    Para c de 1 ate 5 faca
       EscrevaL("ALUNO",c)
       Escreva("Nome: ")
       leia(nome[c])
-      Escreva("1ª Nota: ")
+      Escreva("1Âª Nota: ")
       Leia(n1[c])
-      Escreva("1ª Nota: ")
+      Escreva("1Âª Nota: ")
       Leia(n2[c])
-      Escreva("1ª Nota: ")
+      Escreva("1Âª Nota: ")
       Leia(n3[c])
 
       media[c] <- (n1[c]+n3[c]+n3[c])/3
-      
+
+      SM <- SM+media[c]
    FimPara
-   
+
+   MT <- SM/5
+
    LimpaTela
-   
+
    EscrevaL("LISTAGEM DE ALUNOS")
-   EscrevaL("------------------------")
-   EscrevaL("Nome               Media")
-   EscrevaL("------------------------")
+   EscrevaL("--------------------------------")
+   EscrevaL("Nome               Media  Status")
+   EscrevaL("-------------------------------")
    Para c de 1 ate 5 faca
-      EscrevaL(nome[c]:20,media[c]:4:1)
+      se (media[c]<6) entao
+         status[c] <- "Reprovado"
+      senao
+         status[c] <- "Aprovado"
+      fimse
+
+      EscrevaL(nome[c]:20,media[c]:4:1," ",status[c])
+
+
+      se (media[c]>MT) entao
+         tot <- tot+1
+      fimse
+
    FimPara
+   
+   EscrevaL(" ")
+   EscrevaL("Ao todo, ",tot," alunos ficaram acima da mÃ©dia da turma, que Ã© ",MT:4:2)
+   
 fimalgoritmo
