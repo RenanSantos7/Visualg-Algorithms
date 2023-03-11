@@ -12,7 +12,7 @@ inicio
 
    para i de 1 ate 9 faca
       para j de i+1 ate 10 faca
-         se (vet[i] > vet[j]) entao
+         se (vet[i] > vet[j]) entao // se for maior, troca -> ordem crescente
             aux <- vet[i]
             vet[i] <- vet[j]
             vet[j] <- aux
